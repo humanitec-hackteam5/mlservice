@@ -23,6 +23,7 @@ services:
         -----END PUBLIC KEY-----'
       SECRET_KEY: ww2aa^#2381%9&2pueqk+0ix=g)7h61##(o*mez6h(@b3a3
       STATIC_ROOT: /static/
+      GOOGLE_APPLICATION_CREDENTIALS: /code/google-cred.json
     image: blueprint
     ports:
     - 8080:8080

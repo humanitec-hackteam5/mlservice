@@ -18,4 +18,4 @@ class ImageLabelsView(views.APIView):
             'image': {'source': {'image_uri': url}},
             'features': [{'type': vision.enums.Feature.Type.LABEL_DETECTION}],
         })
-        return response.annotations
+        return Response([{'label': item.description, 'score': item.score} for item in response.label_annotations])
