@@ -23,7 +23,7 @@ from rest_framework import permissions, routers
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-from app.views import TrainViewSet, PredictView
+from app.views import ImageLabelsView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -36,7 +36,6 @@ schema_view = get_schema_view(
 )
 
 router = routers.SimpleRouter()
-router.register(r'train', TrainViewSet, base_name='train')
 
 
 urlpatterns = [
@@ -47,7 +46,7 @@ urlpatterns = [
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0),
          name='schema-swagger-ui'),
     path('api/', include(router.urls)),
-    path('api/predict/', PredictView.as_view()),
+    path('api/image_labels/', ImageLabelsView.as_view()),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

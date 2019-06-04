@@ -5,3 +5,4 @@ git+https://github.com/Humanitec/django-oauth-toolkit-jwt@v0.5.3#egg=django-oaut
 djangorestframework==3.9.1
 psycopg2-binary==2.7.7
 drf-yasg==1.10.2
+google-cloud-vision==0.36.0

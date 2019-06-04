@@ -1,13 +1,21 @@
-from rest_framework import views, viewsets, mixins
+from google.cloud import vision
+
+from rest_framework import views, status, permissions
 from rest_framework.response import Response
-from app.serializers import TrainSerializer
 
 
-class TrainViewSet(mixins.RetrieveModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
-    serializer_class = TrainSerializer
+class ImageLabelsView(views.APIView):
 
+    permission_classes = (permissions.IsAuthenticated,)
 
-class PredictView(views.APIView):
+    def post(self, request, format=None):
+        url = request.data.get('url')
+        if not url:
+            return Response({'detail': 'Please provide image URL'}, status=status.HTTP_400_BAD_REQUEST)
 
-    def post(self):
-        return Response(data={})
+        client = vision.ImageAnnotatorClient()
+        response = client.annotate_image({
+            'image': {'source': {'image_uri': url}},
+            'features': [{'type': vision.enums.Feature.Type.LABEL_DETECTION}],
+        })
+        return response.annotations

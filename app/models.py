@@ -13,7 +13,7 @@ class Train(models.Model):
 
     dataset_uuid = models.UUIDField('DataSet UUID')
     created = models.DateTimeField(default=timezone.now)
-    status = models.SmallIntegerField(choices=STATUSES)
+    status = models.SmallIntegerField(choices=STATUSES, default=NOT_TRAINED)
     trained_model = models.FileField(null=True, blank=True)
     dataset_url = models.URLField(null=True, blank=True)
 
