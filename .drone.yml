@@ -8,10 +8,10 @@ services:
 
 pipeline:
   test:
-    image: python:3.6-alpine3.7
+    image: python:3.6
     commands:
-      - apk add --no-cache postgresql-libs bash
-      - apk add --no-cache --virtual .build-deps git python-dev gcc musl-dev postgresql-dev libffi-dev libressl-dev
+      - apt-get update
+      - apt-get install --assume-yes git python3-dev gcc musl-dev libffi-dev make libstdc++ netcat
       - pip install --upgrade pip
       - pip install -r requirements/ci.txt --no-cache-dir
       - bash scripts/wait-for-it.sh $${DATABASE_HOST} $${DATABASE_PORT}
