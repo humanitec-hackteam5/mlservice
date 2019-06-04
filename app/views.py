@@ -1,5 +1,13 @@
-from django.views.generic import TemplateView
+from rest_framework import views, viewsets, mixins
+from rest_framework.response import Response
+from app.serializers import TrainSerializer
 
 
-class WelcomeView(TemplateView):
-    template_name = 'welcome.html'
+class TrainViewSet(mixins.RetrieveModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+    serializer_class = TrainSerializer
+
+
+class PredictView(views.APIView):
+
+    def post(self):
+        return Response(data={})
