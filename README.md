@@ -2,7 +2,13 @@
 title = "Service blueprint (Django)"
 +++
 
-# Service blueprint (Django)
+# Image Labeling Service
+
+Request:
+
+curl -X POST --data '{"url": "https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg"}' https://development-classificationapp-api.newapp.io/blueprint-django-service/image_labels/
+
+The service returns the labels for the given image and scores for each image.
 
 ## Summary
 
