@@ -3,7 +3,7 @@ FROM python:3.6
 WORKDIR /code
 
 RUN apt-get update
-RUN apt-get install --assume-yes git python3-dev gcc musl-dev libffi-dev make libstdc++ netcat
+RUN apt-get install --assume-yes git python3-dev gcc musl-dev libffi-dev make libstdc++6 netcat
 
 COPY ./requirements/base.txt requirements/base.txt
 COPY ./requirements/production.txt requirements/production.txt
