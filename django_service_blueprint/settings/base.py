@@ -27,7 +27,7 @@ DEBUG = False if os.getenv('DEBUG') == 'False' else True
 if DEBUG:
     SECRET_KEY = "ww2aa^#2381%9&2pueqk+0ix=g)7h61##(o*mez6h(@b3a3"
 else:
-    SECRET_KEY = os.environ['SECRET_KEY']
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = []
 
